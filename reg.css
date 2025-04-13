@@ -116,7 +116,7 @@ body::before {
 button{
     display: inline-flex;
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #3fc2aa;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -124,14 +124,13 @@ button{
     font-size: 16px;
     margin: 10px 0;
     background-color
-    transition: background-color 0.3s;
-  }
+    transition: ground-color 0.3s;}
 
 button:hover{
-    background-color:rgba(9,76,29);
+    background-color:#37A892;
     }
 a{
-    color:#007bff;
+    color:#3fc2aa
     text-decoration:underline;
 }
 a:hover {
@@ -151,7 +150,7 @@ a:hover {
     outline: none;
 }
 .input-group input:focus{
-    border-color: #2E865F;
+    border-color: #3fc2aa;
 }
 
 /*edropdown styling*/
@@ -166,15 +165,15 @@ select{
     background-color: #ffffff;
 }
 select:focus {
-    border-color: #2E865F;
+    border-color: #3fc2aa
 }
 #log-in{
-    color: var(--bg-color-1);
+    color:#3fc2aa;
     text-decoration: none;
     font-weight: 500;
     }
     #log-in:hover,
     #log-in:focus{
-        color: rgba(9,76,29);
+        color:#37A892;
         text-decoration: underline;
     }
