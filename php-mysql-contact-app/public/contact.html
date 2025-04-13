@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - KhanyaVirtual</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/scripts.js" defer></script>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                Khanya<span style="color: black;">Virtual</span>
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+                <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="contact-title">Contact Us</h2>
+            <p class="contact-subtitle">We're here to help! Send us your questions or concerns.</p>
+            
+            <form id="contactForm" method="POST" action="src/handlers/contact_handler.php">
+                <div class="mb-3">
+                    <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                </div>
+                <div class="mb-3">
+                    <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                </div>
+                <div class="mb-3">
+                    <input type="text" name="subject" class="form-control" placeholder="Subject" required>
+                </div>
+                <div class="mb-3">
+                    <textarea name="message" class="form-control" rows="5" placeholder="Message" required></textarea>
+                </div>
+                <button type="submit" class="send-message-btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="copyright">
+                © <strong>KhanyaVirtual</strong>, All Right Reserved.
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

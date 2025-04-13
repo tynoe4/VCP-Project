@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../project/clinic-website-template"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "clinic-website-template"
+	}
+}

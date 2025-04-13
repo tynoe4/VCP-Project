@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KhanyaVirtual</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .navbar { 
+            background-color: #fff;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .navbar-brand {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .navbar-nav .nav-link {
+            color: #000;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #007bff;
+        }
+        .appointment-btn {
+            background-color: #007bff;
+            color: white;
+            border-radius: 0px;
+            padding: 29px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            text-align: center;
+            display: inline-block;
+        }
+        .appointment-btn:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        /*Breadcrumb section*/
+.breadcrumb-section {
+            position: relative;
+            height: 350px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+        }
+
+        .breadcrumb-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('images/pexels-rdne-9064349.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .breadcrumb-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .breadcrumb-nav {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease 0.2s forwards;
+        }
+
+        .breadcrumb-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-nav a:hover {
+            color:#007bff;
+        }
+
+        .breadcrumb-nav span {
+            color: #007bff;
+            font-size: 1.1rem;
+        }
+
+        .separator {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Overlay effect */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(76, 175, 134, 0.3), rgba(33, 150, 243, 0.3));
+            z-index: -1;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .breadcrumb-section {
+                height: 250px;
+                padding: 0 20px;
+            }
+
+            .breadcrumb-title {
+                font-size: 2.5rem;
+            }
+
+            .breadcrumb-nav {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .breadcrumb-section {
+                height: 200px;
+            }
+
+            .breadcrumb-title {
+                font-size: 2rem;
+            }
+
+            .breadcrumb-nav {
+                font-size: 0.9rem;
+            }
+        }
+        /*testimonial styles*/
+.testimonial-section {
+    padding: 80px 0;
+    background-color: #fff;
+}
+
+.testimonial-carousel {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+
+.patient-image {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 30px;
+    border: 5px solid #0066ff;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.patient-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.testimonial-text {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.testimonial-text p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.patient-name {
+    color: #0066ff;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.patient-location {
+    color: #666;
+    font-size: 16px;
+    font-style: italic;
+}
+
+/* Navigation Buttons */
+.nav-button {
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.nav-button i {
+    color: #0066ff;
+    font-size: 24px;
+}
+
+.nav-button:hover {
+    background: #0066ff;
+}
+
+.nav-button:hover i {
+    color: #fff;
+}
+
+.carousel-control-prev {
+    left: -80px;
+}
+
+.carousel-control-next {
+    right: -80px;
+}
+
+@media (max-width: 992px) {
+    .carousel-control-prev {
+        left: -40px;
+    }
+    
+    .carousel-control-next {
+        right: -40px;
+    }
+    
+    .nav-button {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .testimonial-text p {
+        font-size: 16px;
+    }
+    
+    .carousel-control-prev,
+    .carousel-control-next {
+        display: none;
+    }
+}
+/*footer section*/
+.footer {
+    background-color: #1a2942;
+    color: #ffffff;
+    padding: 70px 0 0;
+}
+
+.footer h4 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.footer-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-info li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-info li i {
+    color: #007bff;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background: #e7e3e32a;
+    border-radius: 50%;
+    color: #ffffff;
+    margin-right: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #007bff;
+    color: #ffffff;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.footer-links a:hover {
+    color: #007bff;
+    padding-left: 5px;
+}
+
+.footer-links i {
+    font-size: 12px;
+    color: #007bff;
+}
+
+.newsletter-form .input-group {
+    background: #ffffff;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.newsletter-form input {
+    border: none;
+    padding: 10px 15px;
+}
+
+.newsletter-form button {
+    border-radius: 0;
+    padding: 10px 20px;
+}
+
+.footer-bottom {
+    background: #152238;
+    padding: 20px 0;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.copyright {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.copyright strong {
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 50px 0 0;
+    }
+    
+    .footer h4 {
+        margin-bottom: 20px;
+    }
+}
+        /* Highlight Active Dropdown Link */
+        .dropdown-menu .dropdown-item.active, 
+        .dropdown-menu .dropdown-item:focus {
+            background-color: #007bff;
+            color: white;
+        }
+        .dropdown-menu .dropdown-item.active:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+        /*back to top button*/
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: #0056b3;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top i {
+    font-size: 20px;
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="bi bi-building"></i> Khanya<span style="color: black;">Virtual</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse ms-auto" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown">
+                            Pages
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="appointment.html">Appointment</a></li>
+                            <li><a class="dropdown-item" href="doctors.html">Our Doctors</a></li>
+                            <li><a class="dropdown-item active" href="testimonial.html">Testimonials</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <!-- Appointment Button at the Far Right -->
+                <div class="ms-3">
+                    <a class="appointment-btn" href="appointment.html">Appointment →</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <!--Breadcrumb-->
+    <section class="breadcrumb-section">
+        <div class="breadcrumb-bg"></div>
+        <div class="overlay"></div>
+        <h1 class="breadcrumb-title">Testimonials</h1>
+        <nav class="breadcrumb-nav">
+            <a href="index.html">HOME</a>
+            <span class="separator">/</span>
+            <a href="#">PAGES</a>
+            <span class="separator">/</span>
+            <span>TESTIMONIALS</span>
+        </nav>
+    </section>
+    <!--testimonial section-->
+    <section class="testimonial-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="badge rounded-pill bg-light text-dark px-4 py-2 mb-3">Testimonial</span>
+                <h2 class="fw-bold mb-5">What Our Patients Say!</h2>
+            </div>
+    
+            <div class="testimonial-carousel position-relative">
+                <div id="testimonialCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <!-- Testimonial 1 -->
+                        <div class="carousel-item active">
+                            <div class="testimonial-content text-center">
+                                <div class="patient-image">
+                                    <img src="images/Advertise your business with me.jpeg" alt="Patient" class="rounded-circle">
+                                </div>
+                                <div class="testimonial-text">
+                                    <p>"This platform made it so easy to talk to a doctor without leaving home. I got my consultation and prescription in minutes. Thank you for bringing healthcare closer to us!"</p>
+                                    <h4 class="patient-name">Tariro M.</h4>
+                                    <p class="patient-location">Harare</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Testimonial 2 -->
+                        <div class="carousel-item">
+                            <div class="testimonial-content text-center">
+                                <div class="patient-image">
+                                    <img src="images/Darius Jr.jpeg" alt="Patient" class="rounded-circle">
+                                </div>
+                                <div class="testimonial-text">
+                                    <p>"Exceptional service! The doctors are very professional and caring. The virtual consultation was smooth and efficient."</p>
+                                    <h4 class="patient-name">Tendai R.</h4>
+                                    <p class="patient-location">Bulawayo</p>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <!-- Testimonial 3 -->
+                        <div class="carousel-item">
+                            <div class="testimonial-content text-center">
+                                <div class="patient-image">
+                                    <img src="images/African doctor stock photo_ Image of profession, intern - 14738904.jpeg" alt="Patient" class="rounded-circle">
+                                </div>
+                                <div class="testimonial-text">
+                                    <p>"Joining this platform has allowed me to offer medical advice to more patients across Zimbabwe.It's a game changer for the healthcare accessibility."</p>
+                                    <h4 class="patient-name">Dr Chipfupa G.</h4>
+                                    <p class="patient-location"><i>Medical Partner</i></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Navigation Arrows -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
+                        <div class="nav-button">
+                            <i class="bi bi-arrow-left"></i>
+                        </div>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
+                        <div class="nav-button">
+                            <i class="bi bi-arrow-right"></i>
+                        </div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- Address Column -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h4>Address</h4>
+                <ul class="footer-info">
+                    <li>
+                        <i class="bi bi-geo-alt"></i>
+                        1458 Avondale,Harare,Zimbabwe
+                    </li>
+                    <li>
+                        <i class="bi bi-telephone"></i>
+                        +26377911308
+                    </li>
+                    <li>
+                        <i class="bi bi-envelope"></i>
+                        info@khanyavirtual
+                    </li>
+                </ul>
+                <div class="social-links">
+                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="youtube"><i class="bi bi-youtube"></i></a>
+                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+
+            <!-- Services Column -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><i class="bi bi-chevron-right"></i> <a href="service.html">Mental Health</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="service.html">Gynecology</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="service.html">HIV & STI Consultation</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="service.html">Chronic Disease Management</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="service.html">Pediatrics</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="service.html">Covid-19 & Flu Consultation</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Links Column -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><i class="bi bi-chevron-right"></i> <a href="about.html">About Us</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="contact.html">Contact Us</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="service.html">Our Services</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="#">Terms & Condition</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="#">Support</a></li>
+                </ul>
+            </div>
+            
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+            <!-- Newsletter Column -->
+            <div class="col-lg-3 col-md-6">
+                <h4>Newsletter</h4>
+                <p>Join our newsletter for the latest health updates and exclusive virtual consultation offers.</p>
+                <form class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Your email">
+                        <button class="btn btn-primary" type="submit">SignUp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="copyright">
+                © <strong>KhanyaVirtual</strong>, All Right Reserved.
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Back to Top Button -->
+<a href="#" class="back-to-top" id="backToTop">
+    <i class="bi bi-arrow-up"></i>
+</a>
+<script>
+// Back to Top Button functionality
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) { // Show button after scrolling 300px
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+
+    backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });</script>
+</body>
+</html>

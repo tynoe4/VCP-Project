@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KhanyaVirtual</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <style>
+    .navbar { 
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .navbar-brand {
+        font-weight: bold;
+        color: #007bff;
+    }
+    .navbar-nav .nav-link {
+        color: #000;
+    }
+    .navbar-nav .nav-link:hover {
+        color: #007bff;
+    }
+    .appointment-btn {
+        background-color: #007bff;
+        color: white;
+        border-radius: 0px;
+        padding: 29px 40px;
+        text-decoration: none;
+        font-weight: bold;
+        text-align: center;
+        display: inline-block;
+    }
+    .appointment-btn:hover {
+        background-color: #0056b3;
+        color: white;
+    }
+    /*  Active Link Highlight */
+.navbar-nav .nav-link.active{
+    color: #007bff;
+    font-weight: bold;
+}
+/*Breadcrumb section*/
+.breadcrumb-section {
+            position: relative;
+            height: 350px;
+            width: 100%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+        }
+
+        .breadcrumb-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+                        url('images/header-page.jpg');
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        .breadcrumb-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .breadcrumb-nav {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease 0.2s forwards;
+        }
+
+        .breadcrumb-nav a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        .breadcrumb-nav a:hover {
+            color:#007bff;
+        }
+
+        .breadcrumb-nav span {
+            color: #007bff;
+            font-size: 1.1rem;
+        }
+
+        .separator {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Overlay effect */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(76, 175, 134, 0.3), rgba(33, 150, 243, 0.3));
+            z-index: -1;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .breadcrumb-section {
+                height: 250px;
+                padding: 0 20px;
+            }
+
+            .breadcrumb-title {
+                font-size: 2.5rem;
+            }
+
+            .breadcrumb-nav {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .breadcrumb-section {
+                height: 200px;
+            }
+
+            .breadcrumb-title {
+                font-size: 2rem;
+            }
+
+            .breadcrumb-nav {
+                font-size: 0.9rem;
+            }
+        }
+        /*contact us section*/
+        .contact-section {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+
+        .contact-card {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            color: #0066ff;
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .contact-label {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        .contact-info {
+            color: #14214d;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .contact-form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-label {
+            color: #14214d;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .form-control {
+            border: 1px solid #e1e1e1;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .form-control:focus {
+            border-color: #0066ff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 102, 255, 0.25);
+        }
+
+        .contact-title {
+            font-size: 32px;
+            color: #14214d;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .contact-subtitle {
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .send-message-btn {
+            background-color: #0066ff;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 8px;
+            border: none;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .send-message-btn:hover {
+            background-color: #0052cc;
+            transform: translateY(-2px);
+        }
+
+        .map-container {
+            height: 450px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .contact-tag {
+            background-color: #e6f0ff;
+            color: #0066ff;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+ /*footer section*/
+.footer {
+    background-color: #1a2942;
+    color: #ffffff;
+    padding: 70px 0 0;
+}
+
+.footer h4 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.footer-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-info li {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.footer-info li i {
+    color: #007bff;
+}
+
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background: #e7e3e32a;
+    border-radius: 50%;
+    color: #ffffff;
+    margin-right: 10px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    background: #007bff;
+    color: #ffffff;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 15px;
+}
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.footer-links a:hover {
+    color: #007bff;
+    padding-left: 5px;
+}
+
+.footer-links i {
+    font-size: 12px;
+    color: #007bff;
+}
+
+.newsletter-form .input-group {
+    background: #ffffff;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.newsletter-form input {
+    border: none;
+    padding: 2px 15px;
+}
+
+.newsletter-form button {
+    border-radius: 0;
+    padding: 10px 20px;
+}
+
+.footer-bottom {
+    background: #152238;
+    padding: 20px 0;
+    margin-top: 50px;
+    text-align: center;
+}
+
+.copyright {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.copyright strong {
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+    .footer {
+        padding: 50px 0 0;
+    }
+    
+    .footer h4 {
+        margin-bottom: 20px;
+    }
+}
+/*back to top button*/
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    left: 25px;
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: #0056b3;
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top i {
+    font-size: 20px;
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <i class="bi bi-building"></i> Khanya<span style="color: black;">Virtual</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse ms-auto" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link " href="index.html">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-bs-toggle="dropdown">
+                        Pages
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item " href="appointment.html">Appointment</a></li>
+                        <li><a class="dropdown-item" href="doctors.html">Our Doctors</a></li>
+                        <li><a class="dropdown-item" href="testimonial.html">Testimonials</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+            </ul>
+            <!-- Appointment Button at the Far Right -->
+            <div class="ms-3">
+                <a class="appointment-btn" href="appointment.html">Appointment →</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<section class="breadcrumb-section">
+    <div class="breadcrumb-bg"></div>
+    <div class="overlay"></div>
+    <h1 class="breadcrumb-title">Contact Us</h1>
+    <nav class="breadcrumb-nav">
+        <a href="index.html">HOME</a>
+        <span class="separator">/</span>
+        <a href="#">PAGES</a>
+        <span class="separator">/</span>
+        <span>CONTACT</span>
+    </nav>
+</section>
+<!--contact us section-->
+<section class="contact-section">
+    <div class="container">
+        <!-- Contact Info Cards -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="contact-card">
+                    <i class="bi bi-geo-alt contact-icon"></i>
+                    <div class="contact-label">Address</div>
+                    <div class="contact-info">Chinhoyi University of Technology, Chinhoyi, Zimbabwe</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="contact-card">
+                    <i class="bi bi-telephone contact-icon"></i>
+                    <div class="contact-label">Call Us Now</div>
+                    <div class="contact-info">+263 67 2122203-5</div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="contact-card">
+                    <i class="bi bi-envelope contact-icon"></i>
+                    <div class="contact-label">Mail Us Now</div>
+                    <div class="contact-info">info@cut.ac.zw</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Contact Form -->
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="contact-form-container">
+                    <span class="contact-tag">Contact Us</span>
+                    <h2 class="contact-title">Have Any Query? Please Contact Us!</h2>
+                    <p class="contact-subtitle">We're here to help! Send us your questions or concerns.</p>
+                    
+                    <form id="contactForm">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Message" required></textarea>
+                        </div>
+                        <button type="submit" class="send-message-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Map -->
+            <div class="col-lg-6">
+                <div class="map-container">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d21543.82299877246!2d30.211909540152092!3d-17.342267048138112!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1930b4613b838f37%3A0xcdfb4b14be1c3bdf!2sChinhoyi%20University%20Of%20Technology%20Male%20Hostel%20B!5e0!3m2!1sen!2szw!4v1742917376887!5m2!1sen!2szw"
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <!-- Address Column -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h4>Address</h4>
+                <ul class="footer-info">
+                    <li>
+                        <i class="bi bi-geo-alt"></i>
+                        1458 Avondale,Harare,Zimbabwe
+                    </li>
+                    <li>
+                        <i class="bi bi-telephone"></i>
+                        +26377911308
+                    </li>
+                    <li>
+                        <i class="bi bi-envelope"></i>
+                        info@khanyavirtual
+                    </li>
+                </ul>
+                <div class="social-links">
+                    <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
+                    <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="youtube"><i class="bi bi-youtube"></i></a>
+                    <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+
+            <!-- Services Column -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h4>Services</h4>
+                <ul class="footer-links">
+                    <li><i class="bi bi-chevron-right"></i> <a href="service.html">Mental Health</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="service.html">Gynecology</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="service.html">HIV & STI Consultation</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="service.html">Chronic Disease Management</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="service.html">Pediatrics</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="service.html">Covid-19 & Flu Consultation</a></li>
+                </ul>
+            </div>
+
+            <!-- Quick Links Column -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><i class="bi bi-chevron-right"></i> <a href="about.html">About Us</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="contact.html">Contact Us</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="service.html">Our Services</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="#">Terms & Condition</a></li>
+                    <li><i class="bi bi-chevron-right"></i> <a href="#">Support</a></li>
+                </ul>
+            </div>
+            
+
+            <!-- Newsletter Column -->
+            <div class="col-lg-3 col-md-6">
+                <h4>Newsletter</h4>
+                <p>Join our newsletter for the latest health updates and exclusive virtual consultation offers.</p>
+                <form class="newsletter-form">
+                    <div class="input-group">
+                        <input type="email" class="form-control" placeholder="Your email">
+                        <button class="btn btn-primary" type="submit">SignUp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="copyright">
+                © <strong>KhanyaVirtual</strong>, All Right Reserved.
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Back to Top Button -->
+<a href="#" class="back-to-top" id="backToTop">
+    <i class="bi bi-arrow-up"></i>
+</a>
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    // Form submission handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Add your form submission logic here
+        alert('Message sent successfully!');
+        this.reset();
+    });
+    // Back to Top Button functionality
+    const backToTopButton = document.getElementById('backToTop');
+    
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) { // Show button after scrolling 300px
+            backToTopButton.classList.add('visible');
+        } else {
+            backToTopButton.classList.remove('visible');
+        }
+    });
+
+    backToTopButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
+</body>
+</html>
